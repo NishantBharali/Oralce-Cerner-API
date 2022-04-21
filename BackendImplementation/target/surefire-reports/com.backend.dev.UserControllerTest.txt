@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.backend.dev.UserControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.366 s <<< FAILURE! - in com.backend.dev.UserControllerTest
+registrationTestException  Time elapsed: 0.149 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<400> but was:<200>
+	at com.backend.dev.UserControllerTest.registrationTestException(UserControllerTest.java:114)
+
