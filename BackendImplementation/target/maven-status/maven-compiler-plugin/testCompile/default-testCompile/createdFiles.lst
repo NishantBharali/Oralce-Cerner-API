@@ -6,6 +6,7 @@ com\backend\dev\JwtFilterTest$MyClassMock1.class
 com\backend\dev\UsersModelTest.class
 com\backend\dev\JwtTest.class
 com\backend\dev\IdeaControllerTest.class
+com\backend\dev\IdeaControllerTests2.class
 com\backend\dev\TokenManagerTest.class
 com\backend\dev\CustomUserDetailsServiceTest.class
 com\backend\dev\ResponseTestCase.class
@@ -15,6 +16,7 @@ com\backend\dev\UserRepositoryTest.class
 com\backend\dev\EndpointExceptionHandlerTest.class
 com\backend\dev\DatabaseServiceTest.class
 com\backend\dev\UserDetailsTest.class
+com\backend\dev\CustomUserDetailsServiceNewTest.class
 com\backend\dev\CustomUserDetailsServiceTest$MyClassMock.class
 com\backend\dev\JwtRequestModelTest.class
 com\backend\dev\SuccessResponseTest.class

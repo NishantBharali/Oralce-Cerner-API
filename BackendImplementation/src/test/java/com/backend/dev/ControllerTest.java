@@ -5,6 +5,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -13,10 +21,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import static java.util.Optional.of;
 import java.io.IOException;
 import java.util.Optional;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,18 +43,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.backend.dev.controller.IdeaController;
+import com.backend.dev.errors.InvalidEndpointException;
 import com.backend.dev.jwtutils.TokenManager;
 import com.backend.dev.model.Idea;
 import com.backend.dev.model.User;
 import com.backend.dev.repositories.IdeaRepository;
 import com.backend.dev.repositories.UserRepository;
 import com.backend.dev.security.CustomUserDetails;
+import com.backend.dev.services.DatabaseService;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -56,6 +68,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebAppConfiguration
 @AutoConfigureMockMvc
 class ControllerTest {
+	
+	@InjectMocks
+	IdeaController ideaController;
 	
    @Autowired
    private MockMvc mvc;
@@ -68,6 +83,9 @@ class ControllerTest {
    
    @MockBean
    IdeaRepository ideaRepository;
+   
+   @MockBean
+   DatabaseService databaseService;
    
    @Autowired
    WebApplicationContext webApplicationContext;
@@ -90,60 +108,7 @@ class ControllerTest {
       ObjectMapper objectMapper = new ObjectMapper();
       return objectMapper.readValue(json, clazz);
    }
-   
-   @Test
-   void getIdeasListTest() throws Exception {
-      String uri = "/idea";
-      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
-         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
       
-      int status = mvcResult.getResponse().getStatus();
-      assertEquals(200, status);
-      String content = mvcResult.getResponse().getContentAsString();
-      Idea[] idealist = mapFromJson(content, Idea[].class);
-   }
-   
-   @Test
-   void getOneIdeaTest() throws Exception {
-      String uri = "/idea/{id}";
-      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri, 3)
-         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-    	           
-      int status = mvcResult.getResponse().getStatus();
-      assertEquals(404, status);
-      String content = mvcResult.getResponse().getContentAsString();
-   }
-   
-   @Test
-   void getIdeasOfUserTest() throws Exception {
-		  String email = "test";
-		  TokenManager tmObj = new TokenManager();
-		  User userObj = new User("test", "test");
-	   	  CustomUserDetails userDetailsObj = new CustomUserDetails(userObj);
-		  tmObj.setJwt();
-		String str = tmObj.generateJwtToken(userDetailsObj);
-	   
-		String uri = "/idea/user";
-      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri).param("email", email).header("Authorization", "Bearer " + str)
-         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-    	      
-      int status = mvcResult.getResponse().getStatus();
-      assertEquals(404, status);
-      String content = mvcResult.getResponse().getContentAsString();
-   }
-   
-   @Test
-   void getAuthUserIdea() throws Exception {
-
-		  String email = "dhruv@gmail.com";
-	   
-       mvc.perform(get("/idea/user")
-    		   .param("email", email))
-               .andDo(print())
-               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-               .andExpect(status().isOk());
-   }
-   
    @Test
    void PostAnIdeaTestFail() throws Exception {
 	  user.setEmail("test");
@@ -160,33 +125,31 @@ class ControllerTest {
    }
    
    @Test
-   void findOne() throws Exception {
+   void findIdeaByIdTestSuccess() throws Exception {
+
+	   User user = new User("test", "test");
+	   Optional<Idea> idea = Optional.ofNullable(new Idea(user, "test", "test", 3));
+	   when(databaseService.getIdeaRepository()).thenReturn(ideaRepository);
+	   when(ideaRepository.existsById(1l)).thenReturn(true);
+	   when(ideaRepository.findById(1l)).thenReturn(idea);
 	   
-	   Optional<Idea> idea = Optional.ofNullable(new Idea());
-       Mockito.when(ideaRepository.existsById(idea.get().getId())).thenReturn(true);
-	   mvc.perform(get("/idea/{id}"))
-               .andDo(print())
-               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-               .andExpect(status().isOk())
-               .andExpect(jsonPath("$.id", is(idea.get().getId())));
+	   ResultActions response = mvc.perform(get("/idea/{id}", 1l));
+	   
+	   response.andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.ideaTitle", Matchers.is("test")));
    }
    
    @Test
-   void postSuccessTest() throws Exception {
- 	   
- 	  User user = new User("dhruv@gmail.com", "DHruv@2009");
- 	  Idea idea = new Idea(user, "test", "test d", 3);
- 	  
- 	  Mockito.when(ideaRepository.save(Mockito.any(Idea.class))).thenReturn(idea);
- 	  	   
-       mvc.perform(post("/idea")
-    		   .param("email", user.getEmail())
-     		  .content(asJsonString(idea))
-     		  .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-               .andDo(print())
-               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-               .andExpect(status().isOk());
-          
+   void findIdeaByIdTestFailure() throws Exception {
+
+	   User user = new User("test", "test");
+	   Optional<Idea> idea = Optional.ofNullable(new Idea(user, "test", "test", 3));
+	   when(databaseService.getIdeaRepository()).thenReturn(ideaRepository);
+	   when(ideaRepository.existsById(1l)).thenReturn(false);
+	   when(ideaRepository.findById(1l)).thenReturn(idea);
+	   
+	   ResultActions response = mvc.perform(get("/idea/{id}", 1l));
+	   
+	   response.andDo(print()).andExpect(status().isNotFound());
    }
 
    		public String asJsonString(final Object obj) {
@@ -202,41 +165,50 @@ class ControllerTest {
     	   
    	 	  User user = new User("dhruv@gmail.com", "DHruv@2009");
    	 	 Optional<Idea> idea1 = Optional.ofNullable(new Idea(user, "test", "test d", 3));
-   	 	  Idea idea = new Idea(user, "test", "test d", 3);
-   	 	  
-   	 	  Mockito.when(ideaRepository.findById(Mockito.any())).thenReturn(idea1);
-   	 	  Mockito.when(ideaRepository.save(Mockito.any(Idea.class))).thenReturn(idea);
+   	 	 Idea idea2 = new Idea(user, "test is new", "test description is new", 4);
+   	 	 ideaController.setDatabaseService(databaseService);
+   		 when(databaseService.getIdeaRepository()).thenReturn(ideaRepository);
+   	 	  Mockito.when(ideaRepository.existsById(1l)).thenReturn(true);
+   	 	  Mockito.when(ideaRepository.findById(1l)).thenReturn(idea1);
+   	 	  Mockito.when(ideaRepository.save(idea2)).thenReturn(idea2);
    	 	  	   
-   	       mvc.perform(put("/idea/9")
-   	     		  .content(asJsonString(idea))
+   	       mvc.perform(put("/idea/{id}", 1l)
+   	     		  .content(asJsonString(idea2))
    	     		  .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
    	               .andDo(print())
    	               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
    	               .andExpect(status().isOk())
-   	       		   .andExpect(jsonPath("$.id", is(9)));
+   	       		   .andExpect(jsonPath("$.ideaTitle", is("test is new")))
+   	       		   .andExpect(jsonPath("$.ideaDescription", is("test description is new")))
+   	       		   .andExpect(jsonPath("$.ideaStorypoints", is(4)));
    	         
    	   }
    
-//   @Test
-//   void deleteOne() throws Exception {
-//	   	   
-//       mvc.perform(delete("/idea/{id}", "19"))
-//               .andDo(print())
-//               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-//               .andExpect(status().isOk())
-//               .andExpect(jsonPath("$.id", is(19)));
-//   }
+   @Test
+   void deleteIdeaSuccessTest() throws Exception {
+	   long id = 1l;
+	   when(databaseService.getIdeaRepository()).thenReturn(ideaRepository);
+	   when(ideaRepository.existsById(id)).thenReturn(true);
+	   doNothing().when(ideaRepository).deleteById(id);
+	   
+	   ResultActions response = mvc.perform(delete("/idea/{id}", id));
+	   
+	   response.andExpect(status().isOk()).andExpect(jsonPath("$.status", is(200)))
+	   .andExpect(jsonPath("$.message", is("idea deleted")));
+	   
+   }
    
    @Test
    void deleteIdeaErrorTest() throws Exception {
-	   String uri = "/idea/1";
-	   
-      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)
-         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
-    	      
-      int status = mvcResult.getResponse().getStatus();
-      assertEquals(404, status);
-      String content = mvcResult.getResponse().getContentAsString();
+	   long id = 1l;
+	ideaController.setDatabaseService(databaseService);
+	when(databaseService.getIdeaRepository()).thenReturn(ideaRepository);
+	when(ideaRepository.existsById(id)).thenReturn(false);
+	InvalidEndpointException endpointException = assertThrows(InvalidEndpointException.class, ()->{
+		ideaController.deleteIdea(id);
+		});
+	assertTrue(endpointException.getMessage().equals("id not found"));
+	verify(databaseService.getIdeaRepository(), never()).deleteById(anyLong());
    }
    
    

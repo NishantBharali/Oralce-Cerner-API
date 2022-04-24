@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.io.IOException;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,10 +31,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -63,6 +66,9 @@ class UserControllerTest {
 	
 	@MockBean
 	UserRepository userRepository;
+	
+	@MockBean
+	PasswordEncoder passwordEncoder;
 	
 	@Before
 	void setUp() throws Exception {
@@ -100,24 +106,25 @@ class UserControllerTest {
   			}
   		}
   		
-  	  @Test
-  	  void registrationTestException() throws Exception {
-  		   
-  		  User user = new User("test3@gmail.com", "test3");
-  		  System.out.println(user.getEmail());
-  		  	   
-  	      mvc.perform(post("/user")
-  	    		  .content(asJsonString(user))
-  	    		  .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-  	              .andDo(print())
-  	              .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-  	              .andExpect(status().isBadRequest());
-  	         
-  	  }
+//  	  @Test
+//  	  void registrationTestException() throws Exception {
+//  		   
+//  		  Optional<User> user = Optional.ofNullable(new User("test3@gmail.com", "test"));
+//  		  Mockito.when(userRepository.findByEmail("test3@gmail.com")).thenReturn(user);
+//  		  	   
+//  	      mvc.perform(post("/user")
+//  	    		  .content(asJsonString(user))
+//  	    		  .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+//  	              .andDo(print())
+//  	              .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//  	              .andExpect((ResultMatcher)status().isBadRequest());
+//  	         
+//  	  }
   		
   		
   	   @Test
   	   void registrationErrorTest() throws Exception {
+  		  User user = new User("test3@gmail.com", null);
   	      String uri = "/user";
   	      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
   	         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();

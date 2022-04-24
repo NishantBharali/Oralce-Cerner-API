@@ -19,6 +19,7 @@ import com.backend.dev.errors.ErrorResponse;
 import com.backend.dev.model.*;
 
 import com.backend.dev.repositories.UserRepository;
+import com.backend.dev.services.DatabaseService;
 
 /**
  * The Class UserController.
@@ -31,11 +32,22 @@ public class UserController {
 	
 	@Autowired
 	public UserRepository userRepository;
+	
+	@Autowired
+	public DatabaseService databaseService;
 
 	@Autowired
     private PasswordEncoder passwordEncoder;
 
 	Logger log = LoggerFactory.getLogger(UserController.class);
+
+	public DatabaseService getDatabaseService() {
+		return databaseService;
+	}
+
+	public void setDatabaseService(DatabaseService databaseService) {
+		this.databaseService = databaseService;
+	}
 	
 	/**
 	 * Adds a user and save the data in the repository
@@ -50,7 +62,7 @@ public class UserController {
 		
 		Optional<User> details = userRepository.findByEmail(user.getEmail());
 		if(details.isPresent()) {
-			log.debug("Checking that a user does not exist");
+			log.debug("Checking that a user already exists");
 			return new ResponseEntity<>(new ErrorResponse(400, "User already exists, please try a new username"), HttpStatus.BAD_REQUEST);
 		}
 		

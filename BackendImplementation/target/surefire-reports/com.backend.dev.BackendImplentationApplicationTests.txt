@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.backend.dev.BackendImplentationApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.119 s - in com.backend.dev.BackendImplentationApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.908 s - in com.backend.dev.BackendImplentationApplicationTests

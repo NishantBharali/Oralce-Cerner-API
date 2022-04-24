@@ -1,6 +1,7 @@
 package com.backend.dev.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,14 @@ public class IdeaController {
 	@Autowired
 	DatabaseService databaseService;
 	
+	public DatabaseService getDatabaseService() {
+		return databaseService;
+	}
+
+	public void setDatabaseService(DatabaseService databaseService) {
+		this.databaseService = databaseService;
+	}
+
 	/**
 	 * Retrieve all ideas irrespective of the user authenticated.
 	 *
@@ -57,14 +66,14 @@ public class IdeaController {
 	 * @return the idea
 	 */
 	@GetMapping("/idea/{id}")
-	public Idea retrieveOneIdea(@PathVariable("id") long id) {
+	public Optional<Idea> retrieveOneIdea(@PathVariable("id") long id) {
 		
 		 if (!databaseService.getIdeaRepository().existsById(id))
 	        {
 	            throw new InvalidEndpointException("id not found");
 	        }
 		 
-	        return databaseService.getIdeaRepository().findById(id).get();
+	        return Optional.ofNullable(databaseService.getIdeaRepository().findById(id).get());
 	    }
 	
 	/**
@@ -114,7 +123,7 @@ public class IdeaController {
 	 * @return the idea
 	 */
 	@PutMapping("/idea/{id}")
-    public Idea editIdea(@PathVariable long id, @RequestBody Idea idea)
+    public Optional<Idea> editIdea(@PathVariable long id, @RequestBody Idea idea)
     {
         if (!databaseService.getIdeaRepository().existsById(id))
         {
@@ -125,7 +134,7 @@ public class IdeaController {
         a.setIdeaDescription(idea.getIdeaDescription());
         a.setIdeaStorypoints(idea.getIdeaStorypoints());
         databaseService.getIdeaRepository().save(a);
-        return idea;
+        return Optional.ofNullable(idea);
     }
 	
     /**

@@ -19,6 +19,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private DatabaseService databaseService;
+    
+	public DatabaseService getDatabaseService() {
+		return databaseService;
+	}
+
+	public void setDatabaseService(DatabaseService databaseService) {
+		this.databaseService = databaseService;
+	}
 
     /**
      * Load user by username.
