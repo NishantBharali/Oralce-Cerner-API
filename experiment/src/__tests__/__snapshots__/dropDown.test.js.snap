@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check for test cases 1`] = `
+ReactShallowRenderer {
+  "_context": Object {},
+  "_didScheduleRenderPhaseUpdate": false,
+  "_dispatcher": Object {
+    "readContext": [Function],
+    "useCallback": [Function],
+    "useContext": [Function],
+    "useDebugValue": [Function],
+    "useDeferredValue": [Function],
+    "useEffect": [Function],
+    "useId": [Function],
+    "useImperativeHandle": [Function],
+    "useInsertionEffect": [Function],
+    "useLayoutEffect": [Function],
+    "useMemo": [Function],
+    "useReducer": [Function],
+    "useRef": [Function],
+    "useResponder": [Function],
+    "useState": [Function],
+    "useSyncExternalStore": [Function],
+    "useTransition": [Function],
+  },
+  "_element": <DropdownExampleFloating />,
+  "_firstWorkInProgressHook": null,
+  "_forcedUpdate": false,
+  "_idCounter": 0,
+  "_instance": null,
+  "_isReRender": false,
+  "_newState": null,
+  "_numberOfReRenders": 0,
+  "_renderPhaseUpdates": null,
+  "_rendered": <ButtonGroup>
+    <Button
+      as="button"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "color": "floralwhite",
+        }
+      }
+    >
+      <i
+        className="user circle icon"
+        style={
+          Object {
+            "color": "lightgreen",
+          }
+        }
+      />
+    </Button>
+    <Dropdown
+      additionLabel="Add "
+      additionPosition="top"
+      className="button icon"
+      closeOnBlur={true}
+      closeOnEscape={true}
+      deburr={false}
+      floating={true}
+      icon="dropdown"
+      minCharacters={1}
+      noResultsMessage="No results found."
+      openOnFocus={true}
+      options={
+        Array [
+          Object {
+            "key": "Add",
+            "text": <Button
+              as="button"
+              className="ui animated button"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <div
+                className="visible content"
+              >
+                Add here
+              </div>
+              <div
+                className="hidden content"
+              >
+                <i
+                  className="pencil alternate icon"
+                />
+              </div>
+            </Button>,
+            "value": "Add",
+          },
+          Object {
+            "key": "View",
+            "text": <Button
+              as="button"
+              className="ui button"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <div
+                className="visible content"
+              >
+                View Others
+              </div>
+            </Button>,
+            "value": "View",
+          },
+          Object {
+            "key": "Logout",
+            "text": <Button
+              as="button"
+              className="ui animated button"
+              id="btn-logout"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <div
+                className="visible content"
+              >
+                Logout
+              </div>
+              <div
+                className="hidden content"
+              >
+                <i
+                  className="power off icon"
+                />
+              </div>
+            </Button>,
+            "value": "Logout",
+          },
+        ]
+      }
+      renderLabel={[Function]}
+      searchInput="text"
+      selectOnBlur={true}
+      selectOnNavigation={true}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "color": "white",
+          "height": "90%",
+          "marginTop": "2px",
+          "padding": "10px",
+        }
+      }
+      trigger={<React.Fragment />}
+      wrapSelection={true}
+    />
+  </ButtonGroup>,
+  "_rendering": false,
+  "_updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": [Circular],
+  },
+  "_workInProgressHook": null,
+}
+`;

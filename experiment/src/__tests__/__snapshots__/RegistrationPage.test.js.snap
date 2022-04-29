@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check for test cases 1`] = `
+ReactShallowRenderer {
+  "_context": Object {},
+  "_didScheduleRenderPhaseUpdate": false,
+  "_dispatcher": Object {
+    "readContext": [Function],
+    "useCallback": [Function],
+    "useContext": [Function],
+    "useDebugValue": [Function],
+    "useDeferredValue": [Function],
+    "useEffect": [Function],
+    "useId": [Function],
+    "useImperativeHandle": [Function],
+    "useInsertionEffect": [Function],
+    "useLayoutEffect": [Function],
+    "useMemo": [Function],
+    "useReducer": [Function],
+    "useRef": [Function],
+    "useResponder": [Function],
+    "useState": [Function],
+    "useSyncExternalStore": [Function],
+    "useTransition": [Function],
+  },
+  "_element": <RegistrationPage />,
+  "_firstWorkInProgressHook": Object {
+    "memoizedState": "",
+    "next": Object {
+      "memoizedState": "",
+      "next": Object {
+        "memoizedState": "",
+        "next": Object {
+          "memoizedState": "",
+          "next": Object {
+            "memoizedState": false,
+            "next": Object {
+              "memoizedState": false,
+              "next": Object {
+                "memoizedState": false,
+                "next": Object {
+                  "memoizedState": "",
+                  "next": Object {
+                    "memoizedState": "",
+                    "next": Object {
+                      "memoizedState": "",
+                      "next": null,
+                      "queue": Object {
+                        "dispatch": [Function],
+                        "first": null,
+                      },
+                    },
+                    "queue": Object {
+                      "dispatch": [Function],
+                      "first": null,
+                    },
+                  },
+                  "queue": Object {
+                    "dispatch": [Function],
+                    "first": null,
+                  },
+                },
+                "queue": Object {
+                  "dispatch": [Function],
+                  "first": null,
+                },
+              },
+              "queue": Object {
+                "dispatch": [Function],
+                "first": null,
+              },
+            },
+            "queue": Object {
+              "dispatch": [Function],
+              "first": null,
+            },
+          },
+          "queue": Object {
+            "dispatch": [Function],
+            "first": null,
+          },
+        },
+        "queue": Object {
+          "dispatch": [Function],
+          "first": null,
+        },
+      },
+      "queue": Object {
+        "dispatch": [Function],
+        "first": null,
+      },
+    },
+    "queue": Object {
+      "dispatch": [Function],
+      "first": null,
+    },
+  },
+  "_forcedUpdate": false,
+  "_idCounter": 0,
+  "_instance": null,
+  "_isReRender": false,
+  "_newState": null,
+  "_numberOfReRenders": 0,
+  "_renderPhaseUpdates": null,
+  "_rendered": <div
+    className="content-container1"
+  >
+    <LoginHeader />
+    <h1
+      style={
+        Object {
+          "color": "lightblue",
+          "fontSize": "25px",
+          "fontStyle": "-moz-initial",
+          "fontVariant": "all-petite-caps",
+          "textAlign": "center",
+        }
+      }
+    >
+      Create an account
+    </h1>
+    
+    <input
+      id="userName-input"
+      onChange={[Function]}
+      pattern="/[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,8}(.[a-z{2,8}])?/g"
+      placeholder="enter your email"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "1.7px solid white",
+          "color": "white",
+          "lineHeight": "20px",
+        }
+      }
+      value=""
+    />
+    <div
+      className="message error"
+      style={
+        Object {
+          "color": "lightgreen",
+        }
+      }
+    >
+      
+    </div>
+    <input
+      onChange={[Function]}
+      placeholder="enter your password"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "1.7px solid white",
+          "color": "white",
+          "lineHeight": "20px",
+        }
+      }
+      type="password"
+      value=""
+    />
+    <div
+      className="message error"
+      style={
+        Object {
+          "color": "lightgreen",
+        }
+      }
+    >
+      
+    </div>
+    <input
+      onChange={[Function]}
+      placeholder="confirm your password"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "1.7px solid white",
+          "color": "white",
+          "lineHeight": "20px",
+        }
+      }
+      type="password"
+      value=""
+    />
+    <div
+      className="message error"
+      style={
+        Object {
+          "color": "lightgreen",
+        }
+      }
+    >
+      
+    </div>
+    <hr />
+    <button
+      className="ui animated button"
+      disabled={true}
+      id="btn-register"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "border": "3px solid white",
+          "color": "white",
+        }
+      }
+      tableindex="0"
+    >
+      <div
+        className="visible content"
+        style={
+          Object {
+            "color": "lightgray",
+          }
+        }
+      >
+        Register
+      </div>
+      <div
+        className="hidden content"
+      >
+        <i
+          className="chevron right icon"
+          style={
+            Object {
+              "color": "lightblue",
+            }
+          }
+        />
+      </div>
+    </button>
+    <hr />
+    <h4
+      className="mt-2"
+      style={
+        Object {
+          "color": "lightgrey",
+        }
+      }
+    >
+                               Already have an account? 
+      <Link
+        style={
+          Object {
+            "color": "lightgreen",
+          }
+        }
+        to="/"
+      >
+         Login Here
+      </Link>
+    </h4>
+    <FinalFooter />
+  </div>,
+  "_rendering": false,
+  "_updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": [Circular],
+  },
+  "_workInProgressHook": null,
+}
+`;
+
+exports[`check mount 1`] = `ShallowWrapper {}`;
