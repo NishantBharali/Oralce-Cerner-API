@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteIdea } from "../redux/actions/ideaActions";
+import { deleteIdea, getIdeas } from "../redux/actions/ideaActions";
 
 const IdeaComponents = () => {
 
     const dispatch = useDispatch();
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState(0);
 
     const ideasPerPage = 8
     const pageVisited = pageNumber * ideasPerPage
@@ -21,9 +21,10 @@ const IdeaComponents = () => {
         //dispatching the action deleteIdea
         const handleDelete = () => {
           if(window.confirm("are you sure you want to delete?")){
-            dispatch(deleteIdea(id))   
+            dispatch(deleteIdea(id));
+            dispatch(getIdeas());  
           }
-        }
+        };
 
         return(    
         <div className="four wide column" style={{marginBottom: '50px', marginTop: '60px'}} key={id}>
@@ -78,6 +79,7 @@ const IdeaComponents = () => {
     disabledClassName={"paginationDisabled"}
     activeClassName={"paginationActive"}
     nextClassName={"nextButtonClass"}
+    previousClassName={"prevClass"}
     /></>;
 };
 

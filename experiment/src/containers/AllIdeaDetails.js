@@ -29,11 +29,11 @@ const AllIdeaDetails = () => {
     ) : (
       <div>
       <div className="ui grid container" style={{marginTop: '15px', marginBottom: '5px'}}>
-        <div className="card" style={{backgroundColor: 'rgba(0, 0, 0, 0.1)', height: '100%', width: '50%', padding: '20px', border: '5px solid', borderImage: 'linear-gradient(#ff512f, #dd2476, #1c64ff) 1', animation: 'rotate 2.5s ease-in infinite'}}>
+        <div className="card" style={{backgroundColor: 'rgba(0, 0, 0, 0.1)', height: '100%', width: '50%', padding: '20px', border: '5px solid', borderImage: 'linear-gradient(black, white) 1', animation: 'rotate 4.5s ease-in infinite', marginLeft: '270px'}}>
             <div className="content">
-              <p style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'white'}}><strong style={{color: 'lightblue'}}>Title: </strong> {ideaTitle}</p>
-              <p style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'white'}}><strong style={{color: 'lightblue'}}>Description: </strong> {ideaDescription}</p>
-              <p className="meta" style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'white'}}><strong style={{color: 'lightblue'}}>Story points: </strong> {ideaStorypoints}</p>
+              <p style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'lightgrey'}}><strong style={{color: 'lightblue'}}>Title: </strong> {ideaTitle}</p>
+              <p style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'lightgrey'}}><strong style={{color: 'lightblue'}}>Description: </strong> {ideaDescription}</p>
+              <p className="meta" style={{textAlign: "left", fontStyle: "-moz-initial", fontVariant: "all-petite-caps", color: 'lightgrey'}}><strong style={{color: 'lightblue'}}>Story points: </strong> {ideaStorypoints}</p>
             </div>
                
           </div>

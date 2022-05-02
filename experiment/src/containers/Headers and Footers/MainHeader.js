@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { Fragment } from "react";
 import DropdownExampleFloating from "./dropDown";
 
 
 
 const FinalHeader = () => {
 
+  const space = <Fragment>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Fragment>
 
 
 return(
@@ -19,7 +20,7 @@ return(
   <div className="right menu">
 
   <DropdownExampleFloating />
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  <div>{space}</div>
  
   </div>
   </div>

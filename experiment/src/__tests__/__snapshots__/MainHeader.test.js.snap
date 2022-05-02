@@ -62,9 +62,11 @@ ReactShallowRenderer {
       className="right menu"
     >
       <DropdownExampleFloating />
-      <p>
-                       
-      </p>
+      <div>
+        <React.Fragment>
+                         
+        </React.Fragment>
+      </div>
     </div>
   </div>,
   "_rendering": false,

@@ -4,11 +4,11 @@ import { runSaga } from 'redux-saga';
 import { ActionTypes } from "../redux/constants/action-types";
 import "core-js/stable";
 import { createTestStore } from "./testStore.test";
-import { addIdeas, deleteIdea, getAllIdeas, selectedIdeas, setIdeas, updateIdea } from '../redux/actions/ideaActions';
+import { addIdeas, deleteIdea, getAllIdeas, selectedIdeas, getIdeas, updateIdea } from '../redux/actions/ideaActions';
 
 test('selector gives back the idea', () => {
     const ideas1 = [{ideaTitle: 'test', ideaDescription: 'test', ideaStorypoints: 1}];
-    const res = setIdeas(ideas1);
+    const res = getIdeas(ideas1);
     expect(res.payload).toBe(ideas1)
 })
 

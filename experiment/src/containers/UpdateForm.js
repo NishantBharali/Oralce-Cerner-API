@@ -11,8 +11,7 @@ export const UpdateIdea = () => {
     const location = useLocation();
     const dispatch = useDispatch();
 
-    //extracting the value from the global state
-    const ideas = useSelector((state) => state.allIdeas);
+   
     const [id, setId] = useState(()=>{return location.state.id});
     const [ideaTitle, setIdeaTitle] = useState(()=>{return location.state.ideaTitle});
     const [ideaDescription, setIdeaDescription] = useState(()=>{return location.state.ideaDescription});
@@ -29,16 +28,17 @@ let obj = {
         }
 
     //dispatching the action updateIdea upon button click
-    const onButtonHandler = () => {
-            dispatch(updateIdea(obj))
-            history.push('/idealisting')
-    }
+    const onButtonHandler = (event) => {
+            event.preventDefault();
+            dispatch(updateIdea(obj));
+            history.push('/idealisting');
+    };
 
     return(
    
         <>
         <ComponentHeader />
-            <form style={{border: '3px solid lightblue', padding: '20px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent'}}>
+            <form onSubmit={onButtonHandler} style={{border: '3px solid lightblue', padding: '20px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent'}}>
                 <div className="row justify-content-center">
                     <div className="col-3 center-content">
 
@@ -69,12 +69,12 @@ let obj = {
                         <hr/>
                         <button 
                         disabled={!ideaTitle || !ideaDescription || !ideaStorypoints}
-                        className="ui button" style={{backgroundColor: 'transparent', border: '3px solid lightgrey', color: 'lightgrey', borderRadius: '70px'}} tableindex="0" onClick={() => onButtonHandler()}>
+                        className="ui button" style={{backgroundColor: 'transparent', border: '3px solid lightgrey', color: 'lightgrey', borderRadius: '70px'}} tableindex="0" type="submit">
                         <div className="visible content">Submit</div>
                         </button>
 
                             <button 
-                        className="ui animated button" style={{backgroundColor: 'transparent', border: '3px solid white', color: 'lightgrey', marginTop: '10px', borderRadius: '70px'}} tableindex="0" onClick={(e) => history.push('/idealisting')}>
+                        className="ui animated button" type="button" style={{backgroundColor: 'transparent', border: '3px solid white', color: 'lightgrey', marginTop: '10px', borderRadius: '70px'}} tableindex="0" onClick={() => history.push('/idealisting')}>
                         <div className="visible content">Back</div>
                         <div className="hidden content">
                             <i className="chevron circle left icon"></i></div></button>

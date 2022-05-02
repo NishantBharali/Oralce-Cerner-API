@@ -1,6 +1,6 @@
 import { ActionTypes } from "../constants/action-types";
 
-export const setIdeas = (ideas) => {
+export const getIdeas = (ideas) => {
     return {
         type: ActionTypes.GET_IDEAS,
         payload: ideas,
@@ -22,24 +22,24 @@ export const selectedIdeas = (idea) => {
 };
 
 
-export const addIdeas = (ideas) => {
+export const addIdeas = (newIdea) => {
     return {
         type: ActionTypes.ADD_IDEAS,
-        payload: ideas,
+        payload: newIdea,
     };
 };
 
-export const updateIdea = (ideas) => {
+export const updateIdea = (updatedIdea) => {
     return {
         type: ActionTypes.UPDATE_IDEAS,
-        payload: ideas,
+        payload: updatedIdea,
     };
 };
 
-export const deleteIdea = (ideas) => {
+export const deleteIdea = (id) => {
     return {
         type: ActionTypes.DELETE_IDEAS,
-        payload: ideas
+        payload: id
     };
 };
 

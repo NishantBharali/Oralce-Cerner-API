@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import IdeaComponents from "./ideaComponents";
-import { setIdeas } from "../redux/actions/ideaActions";
+import { getIdeas } from "../redux/actions/ideaActions";
 import FinalHeader from "./Headers and Footers/MainHeader";
 import FinalFooter from "./Headers and Footers/Footer";
 
@@ -11,9 +11,9 @@ const IdeaListing = () => {
 
     const dispatch = useDispatch();
 
-    //dispatching setIdeas action
+    //dispatching getIdeas action
     useEffect(() => {
-        dispatch(setIdeas());
+        dispatch(getIdeas());
                
             }, [dispatch]);
 
