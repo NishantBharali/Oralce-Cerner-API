@@ -41,7 +41,7 @@ const options = [
     <Button style={{backgroundColor: 'transparent', color: 'floralwhite'}}>
     <i className="user circle icon" style={{color: 'lightgreen'}}></i>{typeof window !== 'undefined'? localStorage.getItem('email') :null}</Button>
     <Dropdown
-      className='button icon' style={{padding: '10px', height: '90%', marginTop: '2px', backgroundColor: 'transparent', color: 'white'}}
+      className='button icon' style={{padding: '10px', height: '90%', marginTop: '3px', backgroundColor: 'transparent', color: 'white'}}
       floating
       options={options}
       trigger={<></>}

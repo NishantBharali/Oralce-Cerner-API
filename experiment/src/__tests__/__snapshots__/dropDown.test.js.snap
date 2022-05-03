@@ -151,7 +151,7 @@ ReactShallowRenderer {
           "backgroundColor": "transparent",
           "color": "white",
           "height": "90%",
-          "marginTop": "2px",
+          "marginTop": "3px",
           "padding": "10px",
         }
       }

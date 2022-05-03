@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteIdea, getIdeas } from "../redux/actions/ideaActions";
+import { useHistory } from 'react-router-dom';
+import { deleteIdea } from "../redux/actions/ideaActions";
 
 const IdeaComponents = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [pageNumber, setPageNumber] = useState(0);
 
     const ideasPerPage = 8
@@ -22,7 +24,7 @@ const IdeaComponents = () => {
         const handleDelete = () => {
           if(window.confirm("are you sure you want to delete?")){
             dispatch(deleteIdea(id));
-            dispatch(getIdeas());  
+            history.go(0);
           }
         };
 
@@ -45,7 +47,7 @@ const IdeaComponents = () => {
         </Link>
         <br />
               
-              <button id="delete-btn" className="ui button" style={{color:"white", backgroundColor: 'transparent'}} tableindex="0" onClick={() => handleDelete()}>
+              <button id="delete-btn" className="ui button" style={{color:"white", backgroundColor: 'transparent', userSelect: 'none'}} tableindex="0" onClick={() => handleDelete()}>
                 <div className="hidden content">
                   <i className="trash alternate outline icon"></i>
                 </div>

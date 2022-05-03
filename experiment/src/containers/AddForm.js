@@ -22,14 +22,15 @@ export const AddForm = () => {
                 "ideaTitle": ideaTitle,
                 "ideaDescription": ideaDescription,
                 "ideaStorypoints": ideaStorypoints
-            }
+            };
 
             //dispatching the action addIdeas upon click on submit button
             const submit = (event) => {
                 event.preventDefault();
                 dispatch(addIdeas(obj));
                 history.push('/idealisting');
-            }
+                history.go(0);
+            };
   
     return (
         <>

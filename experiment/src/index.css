@@ -230,6 +230,7 @@ div[role='menu'].visible {
       padding: 10px;
       position: relative;
       display: flex;
+      user-select: none;
   }
 
   .prevClass a {
@@ -244,6 +245,7 @@ div[role='menu'].visible {
     padding: 10px;
     position: relative;
     display: flex;
+    user-select: none;
   }
 
 .card {
@@ -257,6 +259,7 @@ div[role='menu'].visible {
 	display: flex;
 	backdrop-filter: blur(10px);
     transition: 0.5s;
+    user-select: none;
 }
 
 .card .content {
@@ -267,7 +270,7 @@ div[role='menu'].visible {
 }
 
 .ui.link.cards:hover .card {
-	transform: scale(1.5);
+	transform: scale(1.65) translateY(-15px);
 }
 
 
@@ -293,4 +296,8 @@ div[role='menu'].visible {
 .card .sci li a {
 	color: #fff;
 	font-size: 20px;
+}
+
+.button.icon {
+    user-select: none;
 }

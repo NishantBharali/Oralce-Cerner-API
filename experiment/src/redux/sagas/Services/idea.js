@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //get request to display all ideas in the repository
-export function RequestGetAllIdea() {
+export async function RequestGetAllIdea() {
     let url = "http://localhost:8090/idea";
     let config = {
         params: {
@@ -13,13 +13,12 @@ export function RequestGetAllIdea() {
     }
 
     const final = axios.get(url, config)
-    return final.then((response) => 
-        response.data
-       
-    )
-    .catch((error) => {
+    try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
         console.log(error);
-    })
+    }
     
 
 
@@ -27,7 +26,7 @@ export function RequestGetAllIdea() {
 };
 
 //get request for an authenticated user
-export function requestGetIdea() {
+export async function requestGetIdea() {
     let url = "http://localhost:8090/idea/user";
     let config = {
         params: {
@@ -39,13 +38,12 @@ export function requestGetIdea() {
     }
 
     const final = axios.get(url, config)
-    return final.then((response) => 
-        response.data
-       
-    )
-    .catch((error) => {
+    try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
         console.log(error);
-    })
+    }
     
 
 
@@ -53,7 +51,7 @@ export function requestGetIdea() {
 };
 
 //get request to display a single idea with id as a parameter
-export function RequestSingleGetIdea(id) {
+export async function RequestSingleGetIdea(id) {
     const api = `http://localhost:8090/idea/${id}`
     let config = {
      
@@ -62,16 +60,16 @@ export function RequestSingleGetIdea(id) {
       }
   }
     const final = axios.get(api, config)
-    return final.then((response) => 
-    response.data
-    )
-    .catch((error) => {
+    try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
         console.log(error);
-    })
+    }
 }
 
 //post request to add an idea
-export function RequestAddIdeas(obj) {
+export async function RequestAddIdeas(obj) {
 
     const api = "http://localhost:8090/idea"
     let config = {
@@ -84,19 +82,18 @@ export function RequestAddIdeas(obj) {
   }
 
     const final = axios.post(api, obj, config)
-    return final.then((response) => 
-        response.data
-       
-    )
-    .catch((error) => {
+    try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
         console.log(error);
-    })
+    }
     
 }
 
 
 //delete request to delete a particular idea by their id
-export const RequestIdeaDeleted = (id) => {
+export const RequestIdeaDeleted = async (id) => {
 
 let url = `http://localhost:8090/idea/${id}`;
 let config = {
@@ -107,18 +104,17 @@ let config = {
 }
 
 const final = axios.delete(url, config)
-return final.then((response) => 
-    response.data
-   
-)
-.catch((error) => {
-    console.log(error);
-})
+    try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
 //update request to update a particular selected idea
-export const RequestUpdateIdea = (id, obj) => {
+export const RequestUpdateIdea = async (id, obj) => {
 
 
 const api = `http://localhost:8090/idea/${id}`
@@ -130,12 +126,11 @@ const api = `http://localhost:8090/idea/${id}`
 
 
         const final = axios.put(api, obj, config)
-        return final.then((response) =>
-            response.data
-           
-        )
-        .catch((error) => {
-            console.log(error);
-        })
+        try {
+        const response = await final;
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
         
     }
