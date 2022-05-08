@@ -1,7 +1,0 @@
-com.backend.dev.controller
-com.backend.dev.errors
-com.backend.dev.jwtutils
-com.backend.dev.model
-com.backend.dev.repositories
-com.backend.dev.security
-com.backend.dev.services
