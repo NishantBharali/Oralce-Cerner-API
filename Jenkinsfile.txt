@@ -1,0 +1,56 @@
+pipeline {
+agent any
+
+
+
+tools {
+//All the required tools like maven that needs to be installed prior to build.
+maven "Maven 3.6"
+nodejs "NodeJS14.16.1"
+}
+
+
+
+stages {
+
+
+stage('Backend Build') {
+steps {
+// Get some code from a GitHub repository
+git branch: 'stable', url: 'https://github.training.cerner.com/DevCenter/Ideas-Repository.git'
+
+//move to subdirectory
+dir('BackendImplementation') {
+//shell script to perform operation
+sh 'mvn clean install -DskipTests=true'
+sh 'mvn clean package -DskipTests=true'
+}
+}
+
+
+
+}
+
+stage('Frontend Build') {
+steps {
+// Get some code from a GitHub repository
+git branch: 'DEVACDMY-39012', url: 'https://github.training.cerner.com/DevCenter/Ideas-Repository.git'
+
+//move to subdirectory
+dir('experiment') {
+//npm ci instead of npm install for continuous integration by mapping package-lock.json instead of package.json
+sh 'npm ci'
+sh 'npm test'
+sh 'npm run build'
+// sh 'npm start'
+}
+}
+
+
+
+}
+
+}
+
+
+}
