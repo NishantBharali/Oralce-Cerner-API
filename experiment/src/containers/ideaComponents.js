@@ -33,7 +33,7 @@ const IdeaComponents = () => {
         
         <Link to={{pathname:`/idea/update/${id}`, state: {id: id, ideaTitle: ideaTitle, ideaDescription: ideaDescription, ideaStorypoints: ideaStorypoints}}}>
           <div className="ui link cards" style={{height: "100%", maxHeight:"150px"}}>
-            <div className="ui fluid card" style={{height: "90%", overflowY: "auto", backgroundColor: 'transparent', border: '2px solid white', borderRadius: '10px', borderColor: 'lightblue'}}>
+            <div className="card" style={{height: "90%", overflowY: "auto", backgroundColor: 'transparent', border: '2px solid white', borderRadius: '10px', borderColor: 'lightblue'}}>
               <div className="content" style={{backgroundColor: 'rgba(0, 0, 0, 0.1)'}}>
                 <div className="header" style={{opacity: 1, textAlign: "left", font: 'small-caption', fontVariant: 'all-small-caps', fontSize: '17px', color: 'lightgrey'}}><strong style={{color: 'lightblue'}}>Title: </strong> {ideaTitle}</div>
               </div>

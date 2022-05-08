@@ -64,7 +64,7 @@ button {
 .page-container {
     display:flex;
     background-color: whitesmoke;
-    background-image: url('https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg');
+    background-image: url('https://img.freepik.com/free-vector/technology-wire-mesh-network-connection-digital-background_1017-28407.jpg?t=st=1651872179~exp=1651872779~hmac=3cebf9e29938c2faa6fb8969833d9dcd52c460e595de6c72ad79bed97cb0d4ff&w=1380');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -270,7 +270,7 @@ div[role='menu'].visible {
 }
 
 .ui.link.cards:hover .card {
-	transform: scale(1.65) translateY(-15px);
+	transform: scale(1.25) translateY(-15px);
 }
 
 

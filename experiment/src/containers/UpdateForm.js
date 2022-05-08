@@ -25,7 +25,7 @@ let obj = {
             "ideaTitle": ideaTitle,
             "ideaDescription": ideaDescription,
             "ideaStorypoints": ideaStorypoints
-        }
+        };
 
     //dispatching the action updateIdea upon button click
     const onButtonHandler = (event) => {
@@ -38,14 +38,14 @@ let obj = {
    
         <>
         <ComponentHeader />
-            <form onSubmit={onButtonHandler} style={{border: '3px solid lightblue', padding: '20px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent'}}>
+            <form onSubmit={onButtonHandler} style={{border: '7px solid purple', padding: '30px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent', borderRadius: '20px'}}>
                 <div className="row justify-content-center">
                     <div className="col-3 center-content">
 
                         <div className="form-floating mb-3">
-                        <h2 style={{textAlign: 'center', color: 'lightyellow', fontSize: '30px'}}>Update Your Idea</h2>
+                        <h2 style={{textAlign: 'center', color: 'lightyellow', fontSize: '25px'}}>UPDATE YOUR IDEA</h2>
                         <label className="form-label" style={{color: 'white', fontSize: '15px', fontVariant: 'all-petite-caps'}}>Title</label>
-                            <input type="text" style={{boxSizing: 'border-box', height: '39px', width: '426px', border: '1.5px solid white', borderRadius: '10px', backgroundColor: 'transparent', color: 'white'}} className="form-control" name="ideaTitle" placeholder="enter your title"
+                            <input type="text" style={{boxSizing: 'border-box', height: '39px', width: '426px', border: '1.5px solid white', borderRadius: '30px', backgroundColor: 'transparent', color: 'white'}} className="form-control" name="ideaTitle" placeholder="enter your title"
                                    value={ideaTitle}
                                    onChange={(e) => setIdeaTitle(e.target.value)}/>
                            
@@ -61,7 +61,7 @@ let obj = {
                         </div>
                         <div className="form-floating mb-3">
                         <label className="form-label" style={{color: 'white', fontSize: '15px', fontVariant: 'all-petite-caps'}}>Story points</label>
-                            <input type="number" className="form-control" style={{boxSizing: 'border-box', height: '39px', width: '426px', border: '1.5px solid white', borderRadius: '10px', backgroundColor: 'transparent', color: 'white'}} name="ideaStorypoints" placeholder="story points"
+                            <input type="number" className="form-control" style={{boxSizing: 'border-box', height: '39px', width: '426px', border: '1.5px solid white', borderRadius: '30px', backgroundColor: 'transparent', color: 'white'}} name="ideaStorypoints" placeholder="story points"
                                    value={ideaStorypoints}
                                    onChange={(e) => setIdeaStorypoints(e.target.value)}
                             />

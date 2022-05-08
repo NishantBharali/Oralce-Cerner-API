@@ -35,12 +35,12 @@ export const AddForm = () => {
     return (
         <>
         <ComponentHeader />
-            <form onSubmit={submit} style={{border: '3px solid lightblue', padding: '10px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent', borderRadius: '5px'}}>
+            <form onSubmit={submit} style={{border: '7px solid purple', padding: '30px', marginBottom: '50px', marginTop: '50px', backgroundColor: 'transparent', borderRadius: '20px'}}>
                 <div className="row justify-content-center">
                     <div className="col-3 center-content">
                         
                         <div className="form-floating mb-3">
-                        <h2 style={{textAlign: 'center', color: 'lightyellow', fontSize: '30px'}}>Add a new Idea</h2>
+                        <h2 style={{textAlign: 'center', color: 'lightyellow', fontSize: '25px', textDecoration: ''}}>ADD A NEW IDEA</h2>
                         <label className="form-label" style={{height: "24px", width: "231px", color: "white", fontStyle: 'Open Sans', fontSize: "17px", lineHeight: "1px", fontVariant: 'all-petite-caps'}}>Title</label>
                         <Popup
                         trigger={<input id = "input-ideaTitle" style={{boxSizing: 'border-box', height: '39px', width: '426px', border: '1.5px solid white', borderRadius: '10px', backgroundColor: 'transparent', color: 'white'}} type="text" className="form-control" name="ideaTitle" placeholder=""
