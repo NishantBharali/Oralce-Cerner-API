@@ -17,7 +17,11 @@ stages {
 stage('Backend Build') {
 steps {
 // Get some code from a GitHub repository
+<<<<<<< HEAD
 git branch: 'stable', url: 'https://github.training.cerner.com/DevCenter/Ideas-Repository.git'
+=======
+git branch: ' CDCInternshipDemo', url: 'https://github.com/NishantBharali/projects.git'
+>>>>>>> 5ba0699 (final jenkins pipeline script for job build)
 
 //move to subdirectory
 dir('BackendImplementation') {
@@ -34,7 +38,11 @@ sh 'mvn clean package -DskipTests=true'
 stage('Frontend Build') {
 steps {
 // Get some code from a GitHub repository
+<<<<<<< HEAD
 git branch: 'DEVACDMY-39012', url: 'https://github.training.cerner.com/DevCenter/Ideas-Repository.git'
+=======
+git branch: ' CDCInternshipDemo', url: 'https://github.com/NishantBharali/projects.git'
+>>>>>>> 5ba0699 (final jenkins pipeline script for job build)
 
 //move to subdirectory
 dir('experiment') {
