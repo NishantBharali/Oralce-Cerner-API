@@ -1,5 +1,5 @@
-# Ideas-Repository
-https://jira2.cerner.com/browse/DEVACDMY-39012
+# Ideas-Repository - API
+An API for an idea portal (C.R.U.D. Application) application where a user can add, view, update and delete his/her own ideas as per their requirement with user authentication and authorization, made for a project component.
 
 # About
 Ideas Repository will act as a central hub for any user to quickly jot down any project ideas they 
@@ -11,6 +11,19 @@ This project is an integration of Springboot, MySQL database and React app. Sema
 # Functionalities
 The project is aimed to develop an app where the user will be able to login and have the option to 
 add/delete/edit project ideas.
+
+# Requirements
+1. Have maven installed and mvn added to path.
+2. Have an instance of mysql server, prefereably running on localhost:3306
+
+# Running the code
+1. Import the project from github
+2. Open the application.properties file and modify the database user, password and url as needed.
+3. In the project directory, open terminal and run the command mvn clean package
+4. goto the target directory which must now contain a JAR file.
+5. Run the jar file using java -jar filename.jar
+6. Open Java doc Documentation folder for a doc for all important classes and methods.
+7. Open Jenkinsfile to use pipeline groovy scripts to build, test and deploy the project (both backend and frontend).
 
 JWT for Authentication and Authorization  
 ===========================================
