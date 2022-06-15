@@ -111,7 +111,7 @@ Versions
 * Create React App: 5.0.0
 * Spring Boot: 2.6.4 RELEASE
 * React: 17.0.2
-* Maven:
+* Maven: 3.8.5
 </pre>
 
 Deployment
