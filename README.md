@@ -92,7 +92,7 @@ Notes
 Quick Development Setup
 =======================
 <pre>
-* git clone https://github.training.cerner.com/DevCenter/Ideas-Repository
+* git clone https://github.com/NishantBharali/projects
 * Import as maven project in eclipse or sts. Run springboot application on embedded Tomcat server localhost:8090. 
 * Create database:
   Create **experiment** named database on MySQL on localhost:3306.
