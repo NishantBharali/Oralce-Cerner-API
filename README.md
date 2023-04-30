@@ -1,4 +1,4 @@
-# Ideas-Repository - API
+# Idea-Repository - API
 An API for an idea portal (C.R.U.D. Application) application where a user can add, view, update and delete his/her own ideas as per their requirement with user authentication and authorization, made for a project component.
 
 # About
