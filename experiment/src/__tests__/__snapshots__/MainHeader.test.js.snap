@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check for test cases 1`] = `
+ReactShallowRenderer {
+  "_context": Object {},
+  "_didScheduleRenderPhaseUpdate": false,
+  "_dispatcher": Object {
+    "readContext": [Function],
+    "useCallback": [Function],
+    "useContext": [Function],
+    "useDebugValue": [Function],
+    "useDeferredValue": [Function],
+    "useEffect": [Function],
+    "useId": [Function],
+    "useImperativeHandle": [Function],
+    "useInsertionEffect": [Function],
+    "useLayoutEffect": [Function],
+    "useMemo": [Function],
+    "useReducer": [Function],
+    "useRef": [Function],
+    "useResponder": [Function],
+    "useState": [Function],
+    "useSyncExternalStore": [Function],
+    "useTransition": [Function],
+  },
+  "_element": <FinalHeader />,
+  "_firstWorkInProgressHook": null,
+  "_forcedUpdate": false,
+  "_idCounter": 0,
+  "_instance": null,
+  "_isReRender": false,
+  "_newState": null,
+  "_numberOfReRenders": 0,
+  "_renderPhaseUpdates": null,
+  "_rendered": <div
+    className="ui pointing menu"
+    style={
+      Object {
+        "backgroundColor": "black",
+        "left": 0,
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 999,
+      }
+    }
+  >
+    <div
+      className="active item"
+    >
+      <b
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Idea Repository
+      </b>
+    </div>
+    <div
+      className="right menu"
+    >
+      <DropdownExampleFloating />
+      <div>
+        <React.Fragment>
+                         
+        </React.Fragment>
+      </div>
+    </div>
+  </div>,
+  "_rendering": false,
+  "_updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": [Circular],
+  },
+  "_workInProgressHook": null,
+}
+`;
