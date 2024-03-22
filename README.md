@@ -1,16 +1,14 @@
 # Idea-Repository - API
-An API for an idea portal (C.R.U.D. Application) application where a user can add, view, update and delete his/her own ideas as per their requirement with user authentication and authorization, made for a project component.
+An API for C.R.U.D. operations application where a user can add, view, update and delete his/her own ideas as per project requirements and criticality with user authentication and authorization, made for a project component to replicate the features of JIRA, a root cause analysis platform.
 
 # About
-Ideas Repository will act as a central hub for any user to quickly jot down any project ideas they 
-have.
+A full-stack, end-to-end web application: Ideas Repository will act as a central hub for any user to quickly jot down any project idea they have and define criticality by assigning issues levels of urgency.
 
 # React + Springboot + MySQL
-This project is an integration of Springboot, MySQL database and React app. Semantics-UI has been implemented for the beautification.
+This project is an integration of Springboot, MySQL database and React app. Semantics-UI and Bootstrap have been implemented for the UI enhancement.
 
 # Functionalities
-The project is aimed to develop an app where the user will be able to login and have the option to 
-add/delete/edit project ideas.
+The project is aimed to develop an app where the user will be able to login, save their credentials with autofill with permission, reset information and have the ability to add/delete/update/edit project details.
 
 # Requirements
 1. Have maven installed and mvn added to path.
